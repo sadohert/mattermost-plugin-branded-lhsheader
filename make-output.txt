@@ -1,0 +1,98 @@
+Running gofmt
+Checking github.com/mattermost/mattermost-plugin-starter-template/build/deploy
+Checking github.com/mattermost/mattermost-plugin-starter-template/build/manifest
+Checking github.com/mattermost/mattermost-plugin-starter-template/server
+Gofmt success
+Running govet
+env GO111MODULE=off /usr/local/bin/go get golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow
+/usr/local/bin/go vet ./...
+/usr/local/bin/go vet -vettool=/Users/stu/go/bin/shadow ./...
+Govet success
+Running lint
+env GO111MODULE=off /usr/local/bin/go get golang.org/x/lint/golint
+/Users/stu/go/bin/golint -set_exit_status ./...
+lint success
+Checking for style guide compliance
+cd webapp && npm run lint
+
+> plugin-starter@0.0.1 lint /Users/stu/development/mattermost-plugin-branded-lhsheader/webapp
+> eslint --ignore-pattern node_modules --ignore-pattern dist --ext .js --ext .jsx --ext tsx --ext ts . --quiet
+
+Warning: React version not specified in eslint-plugin-react settings. See https://github.com/yannickcr/eslint-plugin-react#configuration .
+/usr/local/bin/go test -v -race ./server/...
+=== RUN   TestServeHTTP
+--- PASS: TestServeHTTP (0.00s)
+PASS
+ok  	github.com/mattermost/mattermost-plugin-starter-template/server	1.177s
+cd webapp && /Users/stu/.nvm/versions/node/v10.11.0/bin/npm run fix && /Users/stu/.nvm/versions/node/v10.11.0/bin/npm run test;
+
+> plugin-starter@0.0.1 fix /Users/stu/development/mattermost-plugin-branded-lhsheader/webapp
+> eslint --ignore-pattern node_modules --ignore-pattern dist --ext .js --ext .jsx --ext tsx --ext ts . --quiet --fix
+
+Warning: React version not specified in eslint-plugin-react settings. See https://github.com/yannickcr/eslint-plugin-react#configuration .
+
+> plugin-starter@0.0.1 test /Users/stu/development/mattermost-plugin-branded-lhsheader/webapp
+> jest --forceExit --detectOpenHandles --verbose
+
+PASS src/manifest.test.js
+  ✓ Plugin manifest, id and version are defined (3ms)
+  ✓ Plugin id and version are defined (1ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        4.684s
+Ran all test suites.
+./build/bin/manifest apply
+mkdir -p server/dist;
+cd server && env GOOS=linux GOARCH=amd64 /usr/local/bin/go build  -o dist/plugin-linux-amd64;
+cd server && env GOOS=darwin GOARCH=amd64 /usr/local/bin/go build  -o dist/plugin-darwin-amd64;
+cd server && env GOOS=windows GOARCH=amd64 /usr/local/bin/go build  -o dist/plugin-windows-amd64.exe;
+cd webapp && /Users/stu/.nvm/versions/node/v10.11.0/bin/npm run build;
+
+> plugin-starter@0.0.1 build /Users/stu/development/mattermost-plugin-branded-lhsheader/webapp
+> webpack --mode=production
+
+
+WARNING: We noticed you're using the `useBuiltIns` option without declaring a core-js version. Currently, we assume version 2.x when no version is passed. Since this default version will likely change in future versions of Babel, we recommend explicitly setting the core-js version you are using via the `corejs` option.
+
+You should also be sure that the version you pass to the `corejs` option matches the version specified in your `package.json`'s `dependencies` section. If it doesn't, you need to run one of the following commands:
+
+  npm install --save core-js@2    npm install --save core-js@3
+  yarn add core-js@2              yarn add core-js@3
+
+Hash: 97fa292a520fa68912da
+Version: webpack 4.35.0
+Time: 1487ms
+Built at: 02/03/2020 10:02:57 AM
+  Asset      Size  Chunks             Chunk Names
+main.js  1.83 KiB       0  [emitted]  main
+Entrypoint main = main.js
+[0] multi ./src/index.js 28 bytes {0} [built]
+[1] ./src/index.js + 1 modules 1.24 KiB {0} [built]
+    | ./src/index.js 272 bytes [built]
+    | ./src/manifest.js 999 bytes [built]
+rm -rf dist/
+mkdir -p dist/com.stuartdoherty.mattermost-plugin-branded-lhsheader
+cp plugin.json dist/com.stuartdoherty.mattermost-plugin-branded-lhsheader/
+cp -r assets dist/com.stuartdoherty.mattermost-plugin-branded-lhsheader/
+cp -r public/ dist/com.stuartdoherty.mattermost-plugin-branded-lhsheader/
+mkdir -p dist/com.stuartdoherty.mattermost-plugin-branded-lhsheader/server/dist;
+cp -r server/dist/* dist/com.stuartdoherty.mattermost-plugin-branded-lhsheader/server/dist/;
+mkdir -p dist/com.stuartdoherty.mattermost-plugin-branded-lhsheader/webapp/dist;
+cp -r webapp/dist/* dist/com.stuartdoherty.mattermost-plugin-branded-lhsheader/webapp/dist/;
+cd dist && tar -cvzf com.stuartdoherty.mattermost-plugin-branded-lhsheader-0.1.0.tar.gz com.stuartdoherty.mattermost-plugin-branded-lhsheader
+a com.stuartdoherty.mattermost-plugin-branded-lhsheader
+a com.stuartdoherty.mattermost-plugin-branded-lhsheader/webapp
+a com.stuartdoherty.mattermost-plugin-branded-lhsheader/hello.html
+a com.stuartdoherty.mattermost-plugin-branded-lhsheader/server
+a com.stuartdoherty.mattermost-plugin-branded-lhsheader/plugin.json
+a com.stuartdoherty.mattermost-plugin-branded-lhsheader/assets
+a com.stuartdoherty.mattermost-plugin-branded-lhsheader/assets/.gitkeep
+a com.stuartdoherty.mattermost-plugin-branded-lhsheader/server/dist
+a com.stuartdoherty.mattermost-plugin-branded-lhsheader/server/dist/plugin-linux-amd64
+a com.stuartdoherty.mattermost-plugin-branded-lhsheader/server/dist/plugin-darwin-amd64
+a com.stuartdoherty.mattermost-plugin-branded-lhsheader/server/dist/plugin-windows-amd64.exe
+a com.stuartdoherty.mattermost-plugin-branded-lhsheader/webapp/dist
+a com.stuartdoherty.mattermost-plugin-branded-lhsheader/webapp/dist/main.js
+plugin built at: dist/com.stuartdoherty.mattermost-plugin-branded-lhsheader-0.1.0.tar.gz
