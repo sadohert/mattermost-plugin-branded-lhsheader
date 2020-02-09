@@ -1,14 +1,8 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import logo from './logo.svg';
+import logo from './FSISAC-Reverse-Eye_32x32.png';
 
-// LeftSidebarHeader is a pure component, later connected to the Redux store so as to
-// show the plugin's enabled / disabled status.
 export default class LeftSidebarHeader extends React.PureComponent {
-    // static propTypes = {
-    //     enabled: PropTypes.bool.isRequired,
-    // }
 
     render() {
         const iconStyle = {
@@ -39,10 +33,7 @@ export default class LeftSidebarHeader extends React.PureComponent {
                     />
                 </div>
                 <div style={styleLine2}>
-                    <i
-                        className='icon fa fa-plug'
-                        style={iconStyle}
-                    />
+                    <img src={logo} />
                     <FormattedMessage
                         id='sidebar.line2'
                         defaultMessage='FS-ISAC'

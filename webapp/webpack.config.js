@@ -50,7 +50,7 @@ module.exports = {
                 },
             },
             {
-                test: /\.(svg)$/i,
+                test: /\.(png)$/i,
                 use: [
                     {
                         loader: 'url-loader',
