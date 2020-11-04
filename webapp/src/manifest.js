@@ -5,7 +5,7 @@ const manifest = JSON.parse(`
     "id": "com.stuartdoherty.mattermost-plugin-branded-lhsheader",
     "name": "Branded Lefthand Side Header",
     "description": "A simple Webapp Plugin for Mattermost to persist a branded header for organizations.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "min_server_version": "5.12.0",
     "webapp": {
         "bundle_path": "webapp/dist/main.js"

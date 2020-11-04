@@ -8,6 +8,7 @@ module.exports = {
         modules: [
             'src',
             'node_modules',
+            path.resolve(__dirname),
         ],
         extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
     },
@@ -19,33 +20,9 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        plugins: [
-                            '@babel/plugin-proposal-class-properties',
-                            '@babel/plugin-syntax-dynamic-import',
-                            '@babel/proposal-object-rest-spread',
-                            'babel-plugin-typescript-to-proptypes',
-                        ],
-                        presets: [
-                            ['@babel/preset-env', {
-                                targets: {
-                                    chrome: 66,
-                                    firefox: 60,
-                                    edge: 42,
-                                    safari: 12,
-                                },
-                                modules: false,
-                                debug: false,
-                                useBuiltIns: 'usage',
-                                shippedProposals: true,
-                            }],
-                            ['@babel/preset-react', {
-                                useBuiltIns: true,
-                            }],
-                            ['@babel/typescript', {
-                                allExtensions: true,
-                                isTSX: true,
-                            }],
-                        ],
+                        cacheDirectory: true,
+
+                        // Babel configuration is in babel.config.js because jest requires it to be there.
                     },
                 },
             },
@@ -55,12 +32,11 @@ module.exports = {
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 8192
-                        }
-                    }
-                ]
-            }
-
+                            limit: 8192,
+                        },
+                    },
+                ],
+            },
         ],
     },
     externals: {
@@ -69,6 +45,7 @@ module.exports = {
         'react-redux': 'ReactRedux',
         'prop-types': 'PropTypes',
         'react-bootstrap': 'ReactBootstrap',
+        'react-router-dom': 'ReactRouterDom',
     },
     output: {
         path: path.join(__dirname, '/dist'),

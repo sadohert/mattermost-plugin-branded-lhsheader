@@ -1,29 +1,47 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import logo from './FSISAC-Reverse-Eye_32x32.png';
+import PropTypes from 'prop-types';
+
+import {FormattedMessage} from 'react-intl';
+
+import logo from './172x32-PlaceholderLogo.png';
+import logoMattermost from './logoHorizontalWhite32.png';
 
 export default class LeftSidebarHeader extends React.PureComponent {
-
+    static propTypes = {
+        enabled: PropTypes.bool.isRequired,
+        theme: PropTypes.object.isRequired,
+    }
     render() {
-        const iconStyle = {
-            display: 'inline-block',
-            margin: '0 7px 0 1px',
-            color: 'rgba(255,255,255,0.6)',
-        };
         const styleLine1 = {
             margin: '.5em 0 .5em',
             padding: '0 12px 0 15px',
-            color: 'rgba(255,255,255,0.6)',
-            fontStyle: 'italic'
+            color: this.props.theme.sidebarText,
+            fontStyle: 'italic',
 
         };
         const styleLine2 = {
             margin: '.5em 0 .5em',
             padding: '0 12px 0 15px',
-            color: 'rgba(255,255,255,0.6)',
-            fontWeight: 'bold'
+            color: this.props.theme.sidebarHeaderBg,
+            fontWeight: 'bold',
+
+            // filter: brightness(0.25),
+            // height: '16',
+            // justifyContent: "center",
+            // alignItems: "center"
         };
 
+        const styleLine3 = {
+            margin: '.5em 0 .5em',
+            padding: '0 12px 0 19px',
+            color: this.props.theme.sidebarHeaderBg,
+            fontWeight: 'bold',
+
+            //filter: brightness(0.25),
+            // height: '16',
+            // justifyContent: "center",
+            // alignItems: "center"
+        };
         return (
             <div>
                 <div style={styleLine1}>
@@ -33,10 +51,16 @@ export default class LeftSidebarHeader extends React.PureComponent {
                     />
                 </div>
                 <div style={styleLine2}>
-                    <img src={logo} />
-                    <FormattedMessage
-                        id='sidebar.line2'
-                        defaultMessage='FS-ISAC'
+                    <img
+                        height='16'
+                        src={logo}
+                        color='red'
+                    />
+                </div>
+                <div style={styleLine3}>
+                    <img
+                        height='16'
+                        src={logoMattermost}
                     />
                 </div>
             </div >
