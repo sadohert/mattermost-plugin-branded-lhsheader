@@ -59,7 +59,8 @@
     "react": "16.8.6",
     "react-redux": "5.0.7",
     "redux": "4.0.1",
-    "typescript": "3.5.3"
+    "typescript": "3.5.3",
+    "url-loader": "^4.1.1"
   },
   "jest": {
     "snapshotSerializers": [
