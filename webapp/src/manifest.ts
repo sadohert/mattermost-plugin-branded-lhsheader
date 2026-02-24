@@ -7,7 +7,7 @@ const manifest = JSON.parse(`
     "description": "A simple Webapp Plugin for Mattermost to persist a branded header for organizations.",
     "homepage_url": "https://github.com/sadohert/mattermost-plugin-branded-lhsheader",
     "support_url": "https://github.com/sadohert/mattermost-plugin-branded-lhsheader/issues",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "min_server_version": "6.2.1",
     "webapp": {
         "bundle_path": "webapp/dist/main.js"
