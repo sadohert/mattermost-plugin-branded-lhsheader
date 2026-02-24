@@ -1,6 +1,5 @@
-import {id as pluginId} from './manifest';
-
 import LeftSidebarHeader from './components/left_sidebar_header';
+import manifest from './manifest';
 
 export default class Plugin {
     initialize(registry) {
@@ -10,6 +9,6 @@ export default class Plugin {
 
     uninitialize() {
         //eslint-disable-next-line no-console
-        console.log(pluginId + '::uninitialize()');
+        console.log(manifest.id + '::uninitialize()');
     }
 }

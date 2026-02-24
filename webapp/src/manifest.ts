@@ -5,19 +5,20 @@ const manifest = JSON.parse(`
     "id": "com.stuartdoherty.mattermost-plugin-branded-lhsheader",
     "name": "Branded Lefthand Side Header",
     "description": "A simple Webapp Plugin for Mattermost to persist a branded header for organizations.",
+    "homepage_url": "https://github.com/sadohert/mattermost-plugin-branded-lhsheader",
+    "support_url": "https://github.com/sadohert/mattermost-plugin-branded-lhsheader/issues",
     "version": "0.2.0",
-    "min_server_version": "5.12.0",
+    "min_server_version": "6.2.1",
     "webapp": {
         "bundle_path": "webapp/dist/main.js"
     },
     "settings_schema": {
         "header": "",
         "footer": "",
-        "settings": []
+        "settings": [],
+        "sections": null
     }
 }
 `);
 
 export default manifest;
-export const id = manifest.id;
-export const version = manifest.version;

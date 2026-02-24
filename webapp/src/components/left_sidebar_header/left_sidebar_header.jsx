@@ -1,6 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-
+import React from 'react';
 import {FormattedMessage} from 'react-intl';
 
 import logo from './172x32-PlaceholderLogo.png';
@@ -10,7 +9,7 @@ export default class LeftSidebarHeader extends React.PureComponent {
     static propTypes = {
         enabled: PropTypes.bool.isRequired,
         theme: PropTypes.object.isRequired,
-    }
+    };
     render() {
         const styleLine1 = {
             margin: '.5em 0 .5em',
